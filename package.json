@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jamesmdavis/FullStack/issues"
   },
-  "homepage": "https://github.com/jamesmdavis/FullStack#readme"
+  "homepage": "https://github.com/jamesmdavis/FullStack#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
