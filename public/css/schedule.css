@@ -1,0 +1,26 @@
+body{
+    text-align: center;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#border{
+    border: 2px solid black;
+    width: 80%;
+}
+
+.element{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 10%;
+}
+
+#border p{
+    font-size: 20px;
+    padding: 20px;
+}
