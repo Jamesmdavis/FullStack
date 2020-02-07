@@ -1,3 +1,21 @@
 body{
-    background-color: grey;
+    text-align: center;
+}
+
+.nav-container{
+    display: flex;
+    justify-content: center;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 2px solid black;
+    width: 40%;
+    height: 5vh;
+}
+
+.nav a{
+    text-decoration: none;
 }
