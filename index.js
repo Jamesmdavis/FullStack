@@ -1,9 +1,18 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
-const app = express();
+const sassMiddleware = require('node-sass-middleware');
 const path = require('path');
+
+const app = express();
 const PORT = process.env.PORT || 5000;
 
+//Middleware
+app.use(sassMiddleware({
+    src: path.join(__dirname + '/sass'),
+    dest: path.join(__dirname + '/public'),
+    debug: true,
+    outputStyle: 'expanded'
+}));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 
