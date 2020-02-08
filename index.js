@@ -1,10 +1,13 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const sassMiddleware = require('node-sass-middleware');
+const jwt = require('jsonwebtoken');
 const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+let myToken = '';
 
 //Middleware
 app.use(sassMiddleware({
@@ -33,7 +36,15 @@ app.get('/login', (req, res) => {
     });
 });
 
-app.get('/schedule', (req, res) => {
+app.get('/schedule', verifyToken, (req, res) => {
+    jwt.verify(myToken, 'secretkey', (err, authData) => {
+        if(err) {
+            res.sendStatus(403);
+        } else {
+            res.json({authData});
+        }
+    });
+
     res.render('schedule', {
         title: 'Schedule Page',
         style: 'schedule.css',
@@ -44,13 +55,35 @@ app.get('/schedule', (req, res) => {
     });
 });
 
-app.post('/api/credentials', (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
+app.post('/login', (req, res) => {
+    const user = {
+        username: req.body.username,
+        password: req.body.password
+    }
 
-    
+    jwt.sign({user}, 'secretkey', (err, token) => {
+        if(err) {
+            res.sendStatus(403);
+        } else {
+            myToken = token;
+            res.redirect('/');
+        }
+    });
 });
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
+
+function verifyToken(req, res, next) {
+    const bearerHeader = req.headers['authorization'];
+
+    if(typeof bearerHeader !== 'undefined') {
+        const bearer = bearerHeader.split(' ');
+        const bearerToken = bearer[1];
+        req.token = bearerToken;
+        next();
+    } else {
+        res.sendStatus(403);
+    }
+}
