@@ -1,0 +1,16 @@
+@import './functions.scss';
+
+.nav-container{
+    @include displayFlex(center, center);
+
+    .nav{
+        @include displayFlex(space-evenly, center);
+        border: 2px solid black;
+        width: 40%;
+        height: 5vh;
+
+        a{
+            text-decoration: none;
+        }
+    }
+}

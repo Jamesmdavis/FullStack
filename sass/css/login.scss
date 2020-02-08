@@ -1,0 +1,37 @@
+@import './functions.scss';
+@import './nav.scss';
+
+body{
+    text-align: center;
+}
+
+.form-container{
+    @include displayFlex(center, none);
+    margin-top: 20px;
+
+    .form{
+        width: 70%;
+
+        .form-item{
+            @include displayFlex(left, none);
+            text-align: left;
+            flex-direction: column;
+            font-size: 20px;
+            margin: 20px 0px 0p 0px;
+
+            input{
+                font-size: 20px;
+            }
+        }
+
+        .form-item-submit{
+            background-color: blue;
+            border: none;
+            font-size: 20px;
+            color: white;
+            margin: 30px 0px 0px 0px;
+            padding: 5px;
+            width: 100%;
+        }
+    }
+}

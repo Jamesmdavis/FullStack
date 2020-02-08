@@ -1,0 +1,26 @@
+@import './functions.scss';
+@import './nav.scss';
+
+body{
+    text-align: center;
+}
+
+.container{
+    @include displayFlex(center, center);
+    height: 100%;
+
+    .border{
+        border: 2px solid black;
+        width: 80%;
+
+        .element{
+            @include displayFlex(space-between, none);
+            margin: 10px 10%;
+        }
+
+        p{
+            font-size: 20px;
+            padding: 20px;
+        }
+    }
+}
