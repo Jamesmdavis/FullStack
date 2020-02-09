@@ -1,14 +1,14 @@
 <h1>Login Credentials</h1>
 {{> header}}
 <div class="form-container">
-    <form action="/login" method="POST" class="form">
+    <form id="my_form" class="form">
         <div class="form-item">
             <label for="username">Username</label>
-            <input type="text" name="username">
+            <input class="form-item-input" type="text" name="username">
         </div>
         <div class="form-item">
             <label for="password">Password</label>
-            <input type="text" name="password">
+            <input class="form-item-input" type="text" name="password">
         </div>
         <input type="submit" value="Login" class="form-item-submit">
     </form>
