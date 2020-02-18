@@ -13,8 +13,6 @@ const adminUser = {
     password: 'password'
 }
 
-let adminToken = '';
-
 //An Eney Called Average
 
 //Middleware
