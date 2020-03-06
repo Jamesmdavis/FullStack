@@ -1,7 +1,6 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const sassMiddleware = require('node-sass-middleware');
-const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const path = require('path');
 

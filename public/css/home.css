@@ -1,20 +1,20 @@
 .nav-container {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #5c5c8a;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
 }
 
-.nav-container .nav {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  border: 2px solid black;
-  width: 40%;
-  height: 5vh;
-}
-
-.nav-container .nav a {
+.nav-container a {
+  color: white;
   text-decoration: none;
+  font-size: 20px;
+  padding: 10px 10px 10px 10px;
+  margin: 0px;
+}
+
+.nav-container a:hover {
+  background-color: #3d3d5c;
 }
 
 body {
