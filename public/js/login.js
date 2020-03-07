@@ -7,11 +7,25 @@ form.addEventListener('submit', (e) => {
     let username = inputs[0].value;
     let password = inputs[1].value;
 
-    fetch('/login', {
-        method: 'post',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ username, password })
-    }).then((res) => {
-        console.log(res.text());
+    login(username, password).then((data) => {
+        if(!data.token) {
+            window.location.replace('/login');
+        } else {
+            console.log(data.token);
+            window.localStorage.setItem('token', data.token);
+        }
     });
 });
+
+async function login(username, password) {
+    let response = await fetch('/login', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+    });
+
+    let data = await response.json();
+    return data;
+}

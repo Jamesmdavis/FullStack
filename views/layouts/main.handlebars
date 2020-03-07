@@ -2,9 +2,12 @@
     <head>
         <title>{{title}}</title>
         <link rel="stylesheet" href="css/{{style}}">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     </head>
     <body>
         {{{body}}}
+        {{#if script}}
         <script src="js/{{script}}"></script>
+        {{/if}}
     </body>
 </html>

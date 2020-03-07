@@ -1,15 +1,18 @@
-<h1>Login Credentials</h1>
 {{> header}}
-<div class="form-container">
-    <form id="my_form" class="form">
-        <div class="form-item">
-            <label for="username">Username</label>
-            <input class="form-item-input" type="text" name="username">
+<div class="container">
+    <div class="login-container">
+        <h1>Login</h1>
+        <div class="register">
+            <p>don't have an account?</p>
+            <strong>register</strong>
         </div>
-        <div class="form-item">
-            <label for="password">Password</label>
-            <input class="form-item-input" type="text" name="password">
+        <h3>email</h3>
+        <input type="text" class="text-input" id="input-email">
+        <h3>password</h3>
+        <input type="password" class="text-input" id="input-password">
+        <div>
+            <button class="button" id="button-login">Login</button>
         </div>
-        <input type="submit" value="Login" class="form-item-submit">
-    </form>
+    </div>
+
 </div>

@@ -1,7 +1,6 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const sassMiddleware = require('node-sass-middleware');
-const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const path = require('path');
 
@@ -12,8 +11,6 @@ const adminUser = {
     username: 'admin',
     password: 'password'
 }
-
-let adminToken = '';
 
 //An Eney Called Average
 
@@ -39,15 +36,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.get('/schedule', verifyToken, (req, res) => {
-    jwt.verify(myToken, 'secretkey', (err, authData) => {
-        if(err) {
-            res.sendStatus(403);
-        } else {
-            res.json({authData});
-        }
-    });
-    
+app.get('/schedule', (req, res) => {
     res.render('schedule', {
         title: 'Schedule Page',
         style: 'schedule.css',
@@ -73,15 +62,28 @@ app.post('/login', (req, res) => {
     }
 
     if(user.username != adminUser.username || user.password != adminUser.password) {
-        console.log('Hello');
-        res.redirect('/login');
+        let data = {
+            message: 'Bad Credentials',
+            status: '403',
+            token: null
+        };
+        res.json(data);
     } else {
         jwt.sign({user}, 'secretkey', { expiresIn: '1h' }, (err, token) => {
             if(err) {
-                res.sendStatus(403);
+                let data = {
+                    message: 'Error',
+                    status: err,
+                    token: null
+                };
+                res.json(data);
             } else {
-                console.log('hit');
-                res.send(token);
+                let data = {
+                    message: 'Logged In',
+                    status: '200',
+                    token
+                };
+                res.json(data);
             }
         });
     }
