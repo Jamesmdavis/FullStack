@@ -89,8 +89,12 @@ app.post('/login', (req, res) => {
     }
 });
 
-app.get('/api/credentials', (req, res) => {
-
+//Supposed to be restricted route
+app.get('/dashboard', (req, res) => {
+    res.render('dashboard', {
+        title: 'dashboard',
+        style: 'dashboard.css'
+    });
 });
 
 app.listen(PORT, () => {
